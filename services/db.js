@@ -1,6 +1,8 @@
+require('dotenv').config();
 const MongoClient = require("mongodb").MongoClient;
 const { ObjectId } = require("mongodb");
 
+const uri = process.env.MONGO_URI;
 let cachedDb = null;
 let cachedDbLocal = null;
 
@@ -8,7 +10,7 @@ async function connectToDatabase() {
     if (cachedDb) {
         return cachedDb;
     }
-    const client = await MongoClient.connect('mongodb+srv://jiyeong:bbeuny0105%40%40%21%21@cluster0.2ig35la.mongodb.net/datingDB?retryWrites=true&w=majority&appName=Cluster0');
+    const client = await MongoClient.connect(uri);
     const db = client.db('service');
     cachedDb = db;
     return db;
