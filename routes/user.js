@@ -3,9 +3,9 @@ const router = express.Router();
 const userService = require("../services/user")
 
 router.post('/login', async function (req, res) {
-    const { google_id, gmail } = req.body;
+    const { kakao_id } = req.body;
 	try{
-		const result = await userService.getToken(google_id, gmail)
+		const result = await userService.getToken(kakao_id)
 		if(result.status == 'success') return res.status(200).send({token: result.token})
 		else{
 			return res.status(403).send({message: 'withdraw'})
