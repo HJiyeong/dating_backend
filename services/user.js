@@ -1,15 +1,14 @@
 const {collection} = require('../services/db')
 const authService = require('../services/auth');
 const { ObjectId } = require("mongodb");
-const getToken = async(google_id, gmail) => {
+const getToken = async(kakao_id) => {
 	const coll_user = await collection('user');
-	const user = await coll_user.findOne({google_id: google_id, gmail: gmail})
+	const user = await coll_user.findOne({kakao_id: kakao_id})
 	if(user.removed_at) return {message: 'withdraw', status: 'fail'}
 	let user_id = ''
 	if(!user){
 		const doc = {
-			google_id: google_id,
-			gmail: gmail,
+			kakao_id: kakao_id,
 			created_at: new Date(),
 			updated_at: new Date(),
 			removed_at: new Date()
