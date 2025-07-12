@@ -20,11 +20,11 @@ async function collection(collName) {
     const db = await connectToDatabase();
     return db.collection(collName)
 }
+module.exports = {collection}
+// const test = async() => {
+//     const coll = await collection('scene')
+//     const item = await coll.findOne({_id: new ObjectId('6870f50455474db2a9afdb93')});
+//     console.log(item.type)
 
-const test = async() => {
-    const coll = await collection('scene')
-    const item = await coll.findOne({_id: new ObjectId('6870f50455474db2a9afdb93')});
-    console.log(item.type)
-
-}
-test()
+// }
+// test()
