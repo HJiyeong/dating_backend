@@ -17,21 +17,7 @@ const updateChapterTitle = async(chapter_id, title='') => {
 	const coll = await collection('chapter')
 	await coll.updateOne({_id: new ObjectId(chapter_id)}, {$set: {title: title}})
 }
-const uploadFileData = async(name, bucket, size, key, mimetype, type) => {
-	const coll = await collection('file')
-	const doc = {
-		type: type,
-		key: key,
-		name: name,
-		bucket: bucket,
-		mimetype: mimetype,
-		size: size,
-		created_at: new Date(),
-		updated_at: new Date(),
-		removed_at: null
-	}
-	await coll.insertOne(doc)
-}
+
 const uploadCharacter = async(name, mbti, college, age, concept) => {
 	const coll = await collection('character')
 	const doc = {
@@ -141,9 +127,43 @@ const initChapterEvent = async() => {
 		}
 	}
 }
+const imageBucket = 'ai-o-siranai'
+const audioBucket = 'ai-o-siranai-audio'
+
+const uploadFileData = async(name, bucket, size, key, mimetype, type) => {
+	const coll = await collection('file')
+	const doc = {
+		type: type,
+		key: key,
+		name: name,
+		bucket: bucket,
+		mimetype: mimetype,
+		size: size,
+		created_at: new Date(),
+		updated_at: new Date(),
+		removed_at: null
+	}
+	await coll.insertOne(doc)
+}
+const keyExample = 'ai-o-siranai/ch-1/event-3/line'
+const imagePushData = [
+	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
+	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
+	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
+	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
+	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
+]
+const audioPUshData = []
 const test = async() => {
 	console.log('start')
-	await initChapterEvent()
+	for(const item of imagePushData){
+		try{
+			await uploadFileData(item.name, item.bucket, item.size, item.key, item.mimetype, item.type)
+		}
+		catch(e){
+			console.log(e)
+		}
+	}
 	console.log('finish')
 }
 test()

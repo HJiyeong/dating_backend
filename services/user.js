@@ -5,6 +5,7 @@ const { generateId } = require('../utils/generateId');
 const getToken = async(user_id) => {
 	const coll_user = await collection('user');
 	const user = await coll_user.findOne({_id: new ObjectId(user_id), removed_at: null})
+	if(!user) return {status:'fail', message:'not_user'}
 	const token = await authService.sign(user._id.toString())
 	if(token.status == 'error') return {status:'fail', message:'not_token'}
 	return {status: 'success', token}
@@ -31,6 +32,7 @@ const createUser = async(kakao_id, name) => {
 	return insertedId.toString()
 }
 const checkExist = async(kakao_id) => {
+	console.log('check_exist')
 	const coll_user = await collection('user')
 	const user = await coll_user.findOne({kakao_id: kakao_id, removed_at: null})
 	if(user) return {user_id: user._id.toString(), kakao_id: kakao_id, is_exist:true}
