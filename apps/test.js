@@ -57,6 +57,13 @@ const uploadScenario = async(chapter_id, next_scene_id, event) => {
 		removed_at: null	
 	}
 }
+
+const hero = '687475d50655ca93c3840443'
+const heroine1 = '687475d50655ca93c3840444'
+const heroine2 = '687475d50655ca93c3840445'
+const villian1 = '687475d50655ca93c3840446'
+const villian2 = '687475d50655ca93c3840447'
+const operator = '687475d60655ca93c3840448'
 const initChar = async() => {
 	await uploadCharacter('주인공', 'INTP', '카이스트', 23, '모솔이라 연애를 할 수 있지 않을까 기대하며 몰입캠프에 왔음. 하지만 쑥맥이라 우당탕탕 쉽지 않은 느낌.')
 	await uploadCharacter('서연', 'ISTJ', '한국대', 23, '코딩을 잘하지만 무뚝뚝하고 연애 감정에 서툼.')
@@ -132,31 +139,33 @@ const audioBucket = 'ai-o-siranai-audio'
 
 const uploadFileData = async(name, bucket, size, key, mimetype, type) => {
 	const coll = await collection('file')
-	const doc = {
-		type: type,
-		key: key,
-		name: name,
-		bucket: bucket,
-		mimetype: mimetype,
-		size: size,
-		created_at: new Date(),
-		updated_at: new Date(),
-		removed_at: null
+	const isExist = await coll.findOne({key: key})
+	if(!isExist){
+		const doc = {
+			type: type,
+			key: key,
+			name: name,
+			bucket: bucket,
+			mimetype: mimetype,
+			size: size,
+			created_at: new Date(),
+			updated_at: new Date(),
+			removed_at: null
+		}
+		await coll.insertOne(doc)
 	}
-	await coll.insertOne(doc)
 }
 const keyExample = 'ai-o-siranai/ch-1/event-3/line'
 const imagePushData = [
-	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
-	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
-	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
-	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
-	{name:'', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'', type:'background' || 'character', ch:1, event:1, number:'1-4'},
+	{name:'ex:ch-1:event1:line1.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'ex:ch-1:event1:line1.png', type:'character', ch:1, event:1, number:'1'},
+	{name:'sample_background.png', bucket: imageBucket, size: '2.3MB', mimetype:'png', key:'sample_background.png', type:'background', ch:1, event:1, number:'1'},
 ]
-const audioPUshData = []
+const audioPUshData = [
+	{name:'screamvillain.mp3', bucket: audioBucket, size: '2.6MB', mimetype:'mp3', key:'screamvillain.mp3', type:'background', ch:1, event:1, number:'1'},
+]
 const test = async() => {
 	console.log('start')
-	for(const item of imagePushData){
+	for(const item of audioPUshData){
 		try{
 			await uploadFileData(item.name, item.bucket, item.size, item.key, item.mimetype, item.type)
 		}
