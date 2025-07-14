@@ -88,7 +88,7 @@ const getUploadSigendURLImg = async(key, type) => {
         console.log(e)
     }
 }
-const getReadSignedURLImg = async (key) => {
+const getSignedURLImg = async (key) => {
 	try {
 	  const bucketParams = {
 		Bucket: 'ai-o-siranai',
@@ -116,7 +116,7 @@ async function getAudioUploadUrl(key, contentType = 'audio/mpeg') {
 	const signedUrl = await getSignedUrl(s3Client, command, { expiresIn: 600 });
 	return signedUrl;
 }
-async function getAudioPlaybackUrl(key) {
+async function getSignedUrlAudio(key) {
 	const s3Client = new S3Client({
 		region: 'ap-northeast-2',
 		credentials: {
@@ -155,9 +155,12 @@ async function downloadMp3FromS3(key) {
 	return fileContent;
   }
 // const test = async() => {
-// 	// const img = await getReadSignedURLImg('ai-nai-example1.png')
+// 	// const img = await getSignedURLImg('ai-nai-example1.png')
 // 	const audio = await getAudioPlaybackUrl('screamvillain.mp3')
 // 	console.log(audio)
 // 	// console.log(img)
 // }
 // test()
+module.exports = {
+	getSignedURLImg, getSignedUrlAudio
+}

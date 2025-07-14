@@ -5,5 +5,5 @@ router.get("/", async(req, res) => {
 })
 router.use("/scenario", require("./scenario"))
 router.use("/user", require("./user"))
-
+router.use("/file", require("./file"))
 module.exports = router;

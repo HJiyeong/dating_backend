@@ -1,5 +1,6 @@
 const jsonWebToken = require('jsonwebtoken');
 const crypto = require('crypto');
+const config = require('../config')['dev'];
 async function sign(user_id) {
     const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
         modulusLength: 2048,
@@ -17,4 +18,21 @@ async function sign(user_id) {
     await coll.insertOne(doc)
     return jsonWebToken.sign({user_id: encryptedUserId}, config.token.secret, config.token.options)
 }
-module.exports = {sign}
+async function verify(token) {
+    if(!token) return false;
+    const decoded =  jsonWebToken.verify(token.replace('Bearer ', ''), config.token.secret, config.token.options);
+    const today = new Date()
+    const coll = await collection('jwt');
+    const find = await coll.findOne({user_id: decoded.user_id, expired_at: {$gte: today}});
+    if(!find) throw 'invalid_jwt'
+    const privateKey = crypto.createPrivateKey({
+        key: find.privateKey.buffer,
+        format: 'der',
+        type: 'pkcs1',
+    });
+
+    const decryptedUserId = crypto.privateDecrypt(privateKey, Buffer.from(decoded.user_id, 'base64')).toString();
+
+    return {...decoded, user_id: decryptedUserId}
+}
+module.exports = {sign, verify}
