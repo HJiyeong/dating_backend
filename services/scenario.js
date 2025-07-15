@@ -12,7 +12,9 @@ const getCurrentSaveScenario = async(user_id) => {
 	const coll_user = await collection('user')
 	const user = await coll_user.findOne({_id: new ObjectId(user_id)})
 	if(user){
+		console.log(user)
 		const sceneId = user.save_slot.find(e => e.is_current).scene_id
+		console.log(sceneId)
 		const scene = await getScenario(sceneId)
 		return scene
 	}

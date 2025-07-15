@@ -1,5 +1,5 @@
 const {collection} = require('../services/db')
-const authService = require('../services/auth');
+const authService = require('./auth');
 const { ObjectId } = require("mongodb");
 const { generateId } = require('../utils/generateId');
 const {characterId} = require('../utils/scenarioList')

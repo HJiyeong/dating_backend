@@ -5,7 +5,9 @@ const userService = require("../services/user")
 router.put('/create', async function (req, res) {
     const { kakao_id, name } = req.body;
 	try{
+		console.log('start_create')
 		const userId = await userService.createUser(kakao_id, name)
+		console.log('finisih_create')
 		return res.status(200).send({user_id: userId})
 	}
 	catch(e){

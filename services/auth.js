@@ -1,4 +1,5 @@
 const jsonWebToken = require('jsonwebtoken');
+const {collection} = require('./db')
 const crypto = require('crypto');
 const config = require('../config')['dev'];
 async function sign(user_id) {
