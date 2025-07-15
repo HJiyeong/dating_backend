@@ -157,11 +157,65 @@ const uploadFileData = async(name, bucket, size, key, mimetype, type) => {
 }
 const keyExample = 'ai-o-siranai/ch-1/event-3/line'
 const imagePushData = [
-	{name:'ex:ch-1:event1:line1.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'ex:ch-1:event1:line1.png', type:'character', ch:1, event:1, number:'1'},
-	{name:'sample_background.png', bucket: imageBucket, size: '2.3MB', mimetype:'png', key:'sample_background.png', type:'background', ch:1, event:1, number:'1'},
+	{name:'seoyeon_angry.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'seoyeon_angry.png', type:'character'},//서연 시작
+	{name:'seoyeon_back.png', bucket: imageBucket, size: '2.3MB', mimetype:'png', key:'seoyeon_back.png', type:'character'},
+	{name:'seoyeon_basic.png', bucket: imageBucket, size: '2.2MB', mimetype:'png', key:'seoyeon_basic.png', type:'character'},
+	{name:'seoyeon_detail.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'seoyeon_detail.png', type:'character'},
+	{name:'seoyeon_lighit_smile.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'seoyeon_lighit_smile.png', type:'character'},
+	{name:'seoyeon_embrrass.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'seoyeon_embrrass.png', type:'character'},
+	{name:'seoyeon_home.png', bucket: imageBucket, size: '2.6MB', mimetype:'png', key:'seoyeon_home.png', type:'character'},
+	{name:'seoyeon_shame.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'seoyeon_shame.png', type:'character'},
+	{name:'seoyeon_side.png', bucket: imageBucket, size: '2.3MB', mimetype:'png', key:'seoyeon_side.png', type:'character'},
+	{name:'seoyeon_smile.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'seoyeon_smile.png', type:'character'}, //서연 끝
+
+	{name:'harin_angry.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_angry.png', type:'character'}, //하린 시작
+	{name:'harin_back.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'harin_back.png', type:'character'}, 
+	{name:'harin_basic.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_basic.png', type:'character'},
+	{name:'harin_detail.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_detail.png', type:'character'},
+	{name:'harin_embarrass.png', bucket: imageBucket, size: '2.3MB', mimetype:'png', key:'harin_embarrass.png', type:'character'},
+	{name:'harin_half_back.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'harin_half_back.png', type:'character'},
+	{name:'harin_home.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_home.png', type:'character'},
+	{name:'harin_shame.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_shame.png', type:'character'},
+	{name:'harin_side.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'harin_side.png', type:'character'},
+	{name:'harin_smile.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_smile.png', type:'character'},
+	{name:'harin_upset.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_upset.png', type:'character'}, // 하린 끝
+
+	{name:'hero_basic.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'hero_basic.png', type:'character'}, //주인공
+	{name:'jihoo_basic.png', bucket: imageBucket, size: '2.1MB', mimetype:'png', key:'jihoo_basic.png', type:'character'}, //지후
+	{name:'jinseop_basic.png', bucket: imageBucket, size: '1.8MB', mimetype:'png', key:'jinseop_basic.png', type:'character'}, //진섭
+	{name:'nubzuki_basic.PNG', bucket: imageBucket, size: '1.7MB', mimetype:'PNG', key:'nubzuki_basic.PNG', type:'character'}, //넙죽이
+
+	{name:'blackboard_harin.jpg', bucket: imageBucket, size: '1.6MB', mimetype:'jpg', key:'blackboard_harin.jpg', type:'background'}, //배경시작
+	{name:'blackboard_seoyeon.jpg', bucket: imageBucket, size: '1.4MB', mimetype:'jpg', key:'blackboard_seoyeon.jpg', type:'background'},
+	{name:'cafe.jpg', bucket: imageBucket, size: '2.7MB', mimetype:'jpg', key:'cafe.jpg', type:'background'},
+	{name:'cafeteria.jpg', bucket: imageBucket, size: '2.2MB', mimetype:'jpg', key:'cafeteria.jpg', type:'background'},
+	{name:'chicken.jpg', bucket: imageBucket, size: '559.8KB', mimetype:'jpg', key:'chicken.jpg', type:'background'},
+	{name:'city.jpg', bucket: imageBucket, size: '1.1MB', mimetype:'jpg', key:'city.jpg', type:'background'},
+	{name:'classroom_signboard.jpg', bucket: imageBucket, size: '1.9MB', mimetype:'jpg', key:'classroom_signboard.jpg', type:'background'},
+	{name:'classroom.jpg', bucket: imageBucket, size: '1.8MB', mimetype:'jpg', key:'classroom.jpg', type:'background'},
+	{name:'e3_building.jpg', bucket: imageBucket, size: '4.0MB', mimetype:'jpg', key:'e3_building.jpg', type:'background'},
+	{name:'entrace.jpg', bucket: imageBucket, size: '2.7MB', mimetype:'jpg', key:'entrace.jpg', type:'background'},
+	{name:'entrance_rounge1.jpg', bucket: imageBucket, size: '2.5MB', mimetype:'jpg', key:'entrance_rounge1.jpg', type:'background'},
+	{name:'entrance_rounge2.jpg', bucket: imageBucket, size: '3.1MB', mimetype:'jpg', key:'entrance_rounge2.jpg', type:'background'},
+	{name:'goose.jpg', bucket: imageBucket, size: '3.0MB', mimetype:'jpg', key:'goose.jpg', type:'background'},
+	{name:'ki_building.jpg', bucket: imageBucket, size: '3.1MB', mimetype:'jpg', key:'ki_building.jpg', type:'background'},
+	{name:'middle_rounge.jpg', bucket: imageBucket, size: '2.4MB', mimetype:'jpg', key:'middle_rounge.jpg', type:'background'},
+	{name:'movie.jpg', bucket: imageBucket, size: '48.7KB', mimetype:'jpg', key:'movie.jpg', type:'background'},
+	{name:'night_light1.jpg', bucket: imageBucket, size: '2.1MB', mimetype:'jpg', key:'night_light1.jpg', type:'background'},
+	{name:'night_light2.jpg', bucket: imageBucket, size: '1.9MB', mimetype:'jpg', key:'night_light2.jpg', type:'background'},
+	{name:'passageway.jpg', bucket: imageBucket, size: '1.5MB', mimetype:'jpg', key:'passageway.jpg', type:'background'},
+	{name:'river1.jpg', bucket: imageBucket, size: '4.4MB', mimetype:'jpg', key:'river1.jpg', type:'background'},
+	{name:'river2.jpg', bucket: imageBucket, size: '3.4MB', mimetype:'jpg', key:'river2.jpg', type:'background'},
+	{name:'street.jpg', bucket: imageBucket, size: '5.0MB', mimetype:'jpg', key:'street.jpg', type:'background'},
+	{name:'sungsimdang.jpg', bucket: imageBucket, size: '108.6KB', mimetype:'jpg', key:'sungsimdang.jpg', type:'background'}, //배경끝
 ]
 const audioPUshData = [
-	{name:'screamvillain.mp3', bucket: audioBucket, size: '2.6MB', mimetype:'mp3', key:'screamvillain.mp3', type:'background', ch:1, event:1, number:'1'},
+	{name:'background_basic1.mp3', bucket: audioBucket, size: '13.7MB', mimetype:'mp3', key:'background_basic1.mp3', type:'background'},
+	{name:'background_basic2.mp3', bucket: audioBucket, size: '4.2MB', mimetype:'mp3', key:'background_basic2.mp3', type:'background'},
+	{name:'background_basic3.mp3', bucket: audioBucket, size: '13.6MB', mimetype:'mp3', key:'background_basic3.mp3', type:'background'},
+	{name:'serious1.mp3', bucket: audioBucket, size: '7.6MB', mimetype:'mp3', key:'serious1.mp3', type:'background'},
+	{name:'serious2.mp3', bucket: audioBucket, size: '8.2MB', mimetype:'mp3', key:'serious2.mp3', type:'background'},
+	{name:'serious3.mp3', bucket: audioBucket, size: '3.8MB', mimetype:'mp3', key:'serious3.mp3', type:'background'},
 ]
 const test = async() => {
 	console.log('start')
