@@ -18,7 +18,7 @@ const createUser = async(kakao_id, name) => {
 		name: name,
 		save_slot:[{
 			id: generateId(),
-			scene_id: "6876061f031feeef49e3f925",
+			scene_id: "687691b202396a82e88e131e",
 			is_current:true,
 			love_scores:[
 				{id: generateId(), character_id:characterId.seoyeon, score:0},

@@ -42,7 +42,7 @@ const characterImageId = {
 const backgroundImageId = {
 	blackboard_seoyeon:'blackboard_seoyeon.jpg', //칠판 서연
 	blackboard_harin:'blackboard_harin.jpg', //칠판 하린
-	kakao_talk:'',
+	kakao_talk:'kakao_talk.png', // 카톡배경
 	classroom:'classroom.jpg', //몰입실
 	classroom_signboard:'classroom_signboard.jpg', //몰입실 간판
 	passageway:'passageway.jpg', //몰입실 복도
@@ -72,18 +72,19 @@ const backgroundSoundId = {
 	serious1:'serious1.mp3', // 긴장
 	serious2:'serious2.mp3', // 긴장
 	serious3:'serious3.mp3', // 긴장
-	loud:'' // 시끌벅적
+	dokidoki:'dokidoki.mp3',//설렘
+	despair:'despair.mp3',//절망
+	loud:'loud.mp3' // 시끌벅적
 }
 const effectSoundId = {
 	keyboard:'keyboard', // 키보드 타건
-	camera:'', // 찰칵
-	kakao_talk:'',
-	bicycle:'', // 끼이이익
-	foot_walk:'',
-	heart_beat:'', // 심장 두근대는
-	wind:'', // 바람소리
-	water:'',
-	cheers:'',
+	camera:'camera', // 찰칵
+	kakao_talk:'kakao_talk',
+	bicycle:'bicycle', // 끼이이익
+	foot_walk:'foot_walk', //터벅터벅
+	heart_beat:'heart_beat', // 심장 두근대는
+	wind:'wind', // 바람소리
+	cheers:'cheers', // 짠소리
 }
 const eventInit = {
 	index: '',
@@ -111,273 +112,274 @@ const eventInit = {
 		}
 	],
 }
-const chapter1Event1Scenario = [
-	{
-		script:'칠판에 적혀 있는 조별 좌석대로 착석해 주세요. 각 조는 서로 인사 나누고, 오늘부터 본격적으로 프로젝트 진행합니다.',
-		character_id:characterId.nubzuki,
-		where:'몰입실',
-		when:'목요일 오후 2시',
-		character_image_id:characterImageId.nubzuki_basic,
-		background_image_id:backgroundImageId.classroom_signboard,
-		background_sound_id:backgroundSoundId.basic,
-		type:'text',
-	},
-	{
-		script:'칠판을 바라본다. 낯선 이름들. 그 중, 눈에 띄는 한 이름.',
-		not_character:true,
-		background_image_id:backgroundImageId.blackboard_seoyeon,
-		type:'narration',
-	},
-	{
-		script:'(서연...? 이름은 익숙한데, 낯이 전혀 없네.)',
-		background_image_id:backgroundImageId.blackboard_seoyeon,
-		type:'think',
-	},
-	{
-		script:'내 자리를 향해 걸어가다가, 앞자리에서 조용히 짐을 정리하고 있는 여자를 발견한다.',
-		background_image_id:backgroundImageId.classroom,
-		character_image_id: characterImageId.seoyeon_side,
-		type:'narration',
-	},
-	{
-		script:'차가운 눈동자. 마치 관심조차 없다는 듯한 시선.',
-		background_sound_id:backgroundSoundId.serious1,
-		type:'narration',
-	},
-	{
-		script:'(이 사람이… 서연인가?)',
-		type:'think',
-	},
-	{
-		script:'인사할까, 말까. 머뭇거리다 결국 입을 뗀다.',
-		type:'narration',
-	},
-	{
-		script:'아, 안... 안녕하세요.',
-		character_id:characterId.hero,
-		type:'text',
-	},
-	{
-		script:'서연은 대답 없이 노트북을 열고 조용히 키보드를 두드리기 시작한다.',
-		effect_sound_id:effectSoundId.keyboard,
-		type:'narration',
-	},
-	{
-		script:'(무시...당한 건가?)',
-		type:'think',
-	},
-	{
-		script:'(다시 말 걸어볼까… 아니면 그냥 앉을까…)',
-		type:'think',
-		options:[
-			{
-				id: generateId(),
-				text:'"혹시... 서연 씨는 프론트엔드랑 백엔드 어떤 것을 주로 하세요?"',
-				score_list:[
-					{id: generateId(), character_id:characterId.seoyeon, score:1},
-				]
-			},
-			{
-				id: generateId(),
-				text:'"안녕하세요.” (조금 더 큰 목소리로)',
-				score_list:[
-					{id: generateId(), character_id:characterId.seoyeon, score:2},
-				]
-			},
-			{
-				id: generateId(),
-				text:'"조용하신 스타일이신가 보네요…"',
-				score_list:[
-					{id: generateId(), character_id:characterId.seoyeon, score:-1},
-				]
-			},
-			{
-				id: generateId(),
-				text:'아무 말도 하지 않고 자리에 앉는다 ',
-				score_list:[
-					{id: generateId(), character_id:characterId.seoyeon, score:0},
-				]
-			},
-		],
-	},
-	{
-		script:'그녀는 잠시 나를 바라본 후 다시 말 없이 고개를 돌린다.',
-		type:'narration',
-		character_action_image_id:characterImageId.seoyeon_basic,
-		character_re_image_id:characterImageId.seoyeon_side
-	},
-	{
-		script:'상황은… 예상대로 어색하다.',
-		type:'narration',
-	},
-	{
-		script:'그런데 잠시 후, 분반장이 간단한 과제 설명을 마치고 퇴장하자 서연이 조용히 입을 연다.',
-		character_image_id:characterImageId.seoyeon_basic,
-		type:'narration',
-	},
-	{
-		script:'백엔드는 제가 할게요. 프론트 쪽 맡으세요.',
-		character_id:characterId.seoyeon,
-		type:'text',
-	},
-	{
-		script:'(1주차부터 백엔드라니.. 열심히 하시는 스타일이신가보네..)',
-		type:'think',
-	},
-	{
-		script:'아, 네. 좋아요!',
-		character_id:characterId.hero,
-		type:'text',
-	},
-	{
-		script:'이후에도 별다른 말은 없었다.',
-		not_character:true,
-		type:'narration',
-	},
-	{
-		script:'현재까지 대화는 단 두 줄.',
-		type:'narration',
-	},
-	{
-		script:'하지만 묘하게 신경 쓰인다.',
-		type:'narration',
-	},
-]
 
 const chapter1Event1 = {
 	chapter_id:chapterId.chapter1,
-	next_scene_id:'68765002749b08c2ac1bbc8f',
+	next_scene_id:'687691c86f755e15ad94835d',
 	event:1,
-	scenario: chapter1Event1Scenario.map((data, i) => ({...data, id: generateId(), index: i + 1}))
+	scenario: [
+		{
+			script:'칠판에 적혀 있는 조별 좌석대로 착석해 주세요. 각 조는 서로 인사 나누고, 오늘부터 본격적으로 프로젝트 진행합니다.',
+			character_id:characterId.nubzuki,
+			where:'몰입실',
+			when:'목요일 오후 2시',
+			character_image_id:characterImageId.nubzuki_basic,
+			background_image_id:backgroundImageId.classroom_signboard,
+			background_sound_id:backgroundSoundId.basic,
+			type:'text',
+		},
+		{
+			script:'칠판을 바라본다. 낯선 이름들. 그 중, 눈에 띄는 한 이름.',
+			not_character:true,
+			background_image_id:backgroundImageId.blackboard_seoyeon,
+			type:'narration',
+		},
+		{
+			script:'(서연...? 이름은 익숙한데, 낯이 전혀 없네.)',
+			background_image_id:backgroundImageId.blackboard_seoyeon,
+			type:'think',
+		},
+		{
+			script:'내 자리를 향해 걸어가다가, 앞자리에서 조용히 짐을 정리하고 있는 여자를 발견한다.',
+			background_image_id:backgroundImageId.classroom,
+			character_image_id: characterImageId.seoyeon_side,
+			type:'narration',
+		},
+		{
+			script:'차가운 눈동자. 마치 관심조차 없다는 듯한 시선.',
+			background_sound_id:backgroundSoundId.serious1,
+			type:'narration',
+		},
+		{
+			script:'(이 사람이… 서연인가?)',
+			type:'think',
+		},
+		{
+			script:'인사할까, 말까. 머뭇거리다 결국 입을 뗀다.',
+			type:'narration',
+		},
+		{
+			script:'아, 안... 안녕하세요.',
+			character_id:characterId.hero,
+			type:'text',
+		},
+		{
+			script:'서연은 대답 없이 노트북을 열고 조용히 키보드를 두드리기 시작한다.',
+			effect_sound_id:effectSoundId.keyboard,
+			type:'narration',
+		},
+		{
+			script:'(무시...당한 건가?)',
+			type:'think',
+		},
+		{
+			script:'(다시 말 걸어볼까… 아니면 그냥 앉을까…)',
+			type:'think',
+			background_sound_id:backgroundSoundId.serious3,
+			options:[
+				{
+					id: generateId(),
+					text:'"혹시... 서연 씨는 프론트엔드랑 백엔드 어떤 것을 주로 하세요?"',
+					score_list:[
+						{id: generateId(), character_id:characterId.seoyeon, score:1},
+					]
+				},
+				{
+					id: generateId(),
+					text:'"안녕하세요.” (조금 더 큰 목소리로)',
+					score_list:[
+						{id: generateId(), character_id:characterId.seoyeon, score:2},
+					]
+				},
+				{
+					id: generateId(),
+					text:'"조용하신 스타일이신가 보네요…"',
+					score_list:[
+						{id: generateId(), character_id:characterId.seoyeon, score:-1},
+					]
+				},
+				{
+					id: generateId(),
+					text:'아무 말도 하지 않고 자리에 앉는다 ',
+					score_list:[
+						{id: generateId(), character_id:characterId.seoyeon, score:0},
+					]
+				},
+			],
+		},
+		{
+			script:'그녀는 잠시 나를 바라본 후 다시 말 없이 고개를 돌린다.',
+			background_sound_id:backgroundSoundId.serious1,
+			type:'narration',
+			character_action_image_id:characterImageId.seoyeon_basic,
+			character_re_image_id:characterImageId.seoyeon_side
+		},
+		{
+			script:'상황은… 예상대로 어색하다.',
+			type:'narration',
+		},
+		{
+			script:'그런데 잠시 후, 분반장이 간단한 과제 설명을 마치고 퇴장하자 서연이 조용히 입을 연다.',
+			character_image_id:characterImageId.seoyeon_basic,
+			type:'narration',
+		},
+		{
+			script:'백엔드는 제가 할게요. 프론트 쪽 맡으세요.',
+			character_id:characterId.seoyeon,
+			type:'text',
+		},
+		{
+			script:'(1주차부터 백엔드라니.. 열심히 하시는 스타일이신가보네..)',
+			type:'think',
+		},
+		{
+			script:'아, 네. 좋아요!',
+			character_id:characterId.hero,
+			type:'text',
+		},
+		{
+			script:'이후에도 별다른 말은 없었다.',
+			not_character:true,
+			type:'narration',
+		},
+		{
+			script:'현재까지 대화는 단 두 줄.',
+			type:'narration',
+		},
+		{
+			script:'하지만 묘하게 신경 쓰인다.',
+			type:'narration',
+		},
+	].map((data, i) => ({...data, id: generateId(), index: i + 1}))
 }
-const chapter1Event2Scenario = [
-	{
-	  script: '하루 종일 말 한마디 없이 각자 개발에 집중했다.',
-	  where: '몰입실',
-	  when: '목요일 오후 8시',
-	  background_image_id: backgroundImageId.classroom,
-	  background_sound_id: backgroundSoundId.basic,
-	  not_character: true,
-	  type: 'narration',
-	},
-	{
-	  script: '서연은 말없이 키보드를 두드렸고, 나는 그런 그녀에게 괜히 눈치를 보게 됐다.',
-	  character_image_id: characterImageId.seoyeon_side,
-	  effect_sound_id: effectSoundId.keyboard,
-	  type: 'narration',
-	},
-	{
-	  script: '시간은 어느새 6시. 배가 살짝 고파온다.',
-	  type: 'narration',
-	},
-	{
-	  script: '(…슬슬 저녁 먹을 시간인데)',
-	  type: 'think',
-	},
-	{
-	  script: '잠시 머뭇거리다가 용기를 내어 말을 건넨다.',
-	  type: 'narration',
-	},
-	{
-	  script: '저기, 서연 씨... 혹시 같이 식사하실래요?',
-	  character_id: characterId.hero,
-	  type: 'text',
-	},
-	{
-	  script: '서연은 고개를 들지도 않고 화면을 본 채 키보드 타건을 멈추지 않는다.',
-	  effect_sound_id: effectSoundId.keyboard,
-	  type: 'narration',
-	},
-	{
-	  script: '대답은 없다. 단 1초의 망설임도 없이 무반응.',
-	  type: 'narration',
-	},
-	{
-	  script: '(…됐어. 괜히 말 걸었다.)',
-	  type: 'think',
-	},
-	{
-	  script: '괜히 속이 상한 기분. 허탈하게 자리에서 일어난다.',
-	  type: 'narration',
-	},
-	{
-	  script: '혼자 밥을 받아 자리에 앉는다.',
-	  where: '학식당',
-	  background_image_id: backgroundImageId.cafeteria,
-	  background_sound_id: backgroundSoundId.basic2,
-	  not_character: true,
-	  type: 'narration',
-	},
-	{
-	  script: '식당은 캠프 참가자들로 조금씩 붐비기 시작한다.',
-	  type: 'narration',
-	},
-	{
-	  script: '(혼자 먹는 것도 나쁘진 않지만... 괜히 씁쓸하네)',
-	  type: 'think',
-	},
-	{
-	  script: '그 순간, 누군가 식판을 들고 조용히 내 맞은편 자리에 앉는다.',
-	  character_image_id: characterImageId.seoyeon_basic,
-	  type: 'narration',
-	},
-	{
-	  script: '고개를 들자, 서연이 아무 말 없이 앉아 밥을 먹기 시작한다.',
-	  type: 'narration',
-	},
-	{
-	  script: '(…뭐야. 아까는 왜 아무 말도 안 하고)',
-	  type: 'think',
-	},
-	{
-	  script: '하지만 묘하게… 싫진 않았다.',
-	  type: 'narration',
-	},
-	{
-	  script: '둘 사이엔 여전히 말 한 마디 없지만, 그 적막은 이전보다 조금 덜 어색하게 느껴진다.',
-	  type: 'narration',
-	  options: [
-		{
-		  id: generateId(),
-		  text: '(웃으며)“같이 드실 줄은 몰랐네요.”',
-		  score_list: [
-			{ id: generateId(), character_id: characterId.seoyeon, score: 2 },
-		  ],
-		},
-		{
-		  id: generateId(),
-		  text: '“…아까는 바쁘셨어요?”',
-		  score_list: [
-			{ id: generateId(), character_id: characterId.seoyeon, score: -1 },
-		  ],
-		},
-		{
-		  id: generateId(),
-		  text: '“…괜히 물어봤나 했는데.” (혼잣말)',
-		  score_list: [
-			{ id: generateId(), character_id: characterId.seoyeon, score: 0 },
-		  ],
-		},
-		{
-		  id: generateId(),
-		  text: '아무 말도 하지 않는다.',
-		  score_list: [
-			{ id: generateId(), character_id: characterId.seoyeon, score: 1 },
-		  ],
-		},
-	  ],
-	},
-  ]
 
 const chapter1Event2 = {
 	chapter_id: chapterId.chapter1,
-	next_scene_id: '68765019483e510fa0d9424c',
+	next_scene_id: '687691d8f44c1063dbae01fb',
 	event: 2,
-	scenario: chapter1Event2Scenario.map((data, i) => ({ ...data, id: generateId(), index: i + 1 })),
+	scenario: [
+		{
+		  script: '하루 종일 말 한마디 없이 각자 개발에 집중했다.',
+		  where: '몰입실',
+		  when: '목요일 오후 8시',
+		  background_image_id: backgroundImageId.classroom,
+		  background_sound_id: backgroundSoundId.basic,
+		  not_character: true,
+		  type: 'narration',
+		},
+		{
+		  script: '서연은 말없이 키보드를 두드렸고, 나는 그런 그녀에게 괜히 눈치를 보게 됐다.',
+		  character_image_id: characterImageId.seoyeon_side,
+		  effect_sound_id: effectSoundId.keyboard,
+		  type: 'narration',
+		},
+		{
+		  script: '시간은 어느새 6시. 배가 살짝 고파온다.',
+		  type: 'narration',
+		},
+		{
+		  script: '(…슬슬 저녁 먹을 시간인데)',
+		  type: 'think',
+		},
+		{
+		  script: '잠시 머뭇거리다가 용기를 내어 말을 건넨다.',
+		  type: 'narration',
+		},
+		{
+		  script: '저기, 서연 씨... 혹시 같이 식사하실래요?',
+		  character_id: characterId.hero,
+		  type: 'text',
+		},
+		{
+		  script: '서연은 고개를 들지도 않고 화면을 본 채 키보드 타건을 멈추지 않는다.',
+		  effect_sound_id: effectSoundId.keyboard,
+		  type: 'narration',
+		},
+		{
+		  script: '대답은 없다. 단 1초의 망설임도 없이 무반응.',
+		  type: 'narration',
+		},
+		{
+		  script: '(…됐어. 괜히 말 걸었다.)',
+		  type: 'think',
+		},
+		{
+		  script: '괜히 속이 상한 기분. 허탈하게 자리에서 일어난다.',
+		  type: 'narration',
+		},
+		{
+		  script: '혼자 밥을 받아 자리에 앉는다.',
+		  where: '학식당',
+		  background_image_id: backgroundImageId.cafeteria,
+		  background_sound_id: backgroundSoundId.basic2,
+		  not_character: true,
+		  type: 'narration',
+		},
+		{
+		  script: '식당은 캠프 참가자들로 조금씩 붐비기 시작한다.',
+		  type: 'narration',
+		},
+		{
+		  script: '(혼자 먹는 것도 나쁘진 않지만... 괜히 씁쓸하네)',
+		  type: 'think',
+		},
+		{
+		  script: '그 순간, 누군가 식판을 들고 조용히 내 맞은편 자리에 앉는다.',
+		  character_image_id: characterImageId.seoyeon_basic,
+		  type: 'narration',
+		},
+		{
+		  script: '고개를 들자, 서연이 아무 말 없이 앉아 밥을 먹기 시작한다.',
+		  type: 'narration',
+		},
+		{
+		  script: '(…뭐야. 아까는 왜 아무 말도 안 하고)',
+		  type: 'think',
+		},
+		{
+		  script: '하지만 묘하게… 싫진 않았다.',
+		  type: 'narration',
+		},
+		{
+		  script: '둘 사이엔 여전히 말 한 마디 없지만, 그 적막은 이전보다 조금 덜 어색하게 느껴진다.',
+		  type: 'narration',
+		  background_sound_id:backgroundSoundId.serious3,
+		  options: [
+			{
+			  id: generateId(),
+			  text: '(웃으며)“같이 드실 줄은 몰랐네요.”',
+			  score_list: [
+				{ id: generateId(), character_id: characterId.seoyeon, score: 2 },
+			  ],
+			},
+			{
+			  id: generateId(),
+			  text: '“…아까는 바쁘셨어요?”',
+			  score_list: [
+				{ id: generateId(), character_id: characterId.seoyeon, score: -1 },
+			  ],
+			},
+			{
+			  id: generateId(),
+			  text: '“…괜히 물어봤나 했는데.” (혼잣말)',
+			  score_list: [
+				{ id: generateId(), character_id: characterId.seoyeon, score: 0 },
+			  ],
+			},
+			{
+			  id: generateId(),
+			  text: '아무 말도 하지 않는다.',
+			  score_list: [
+				{ id: generateId(), character_id: characterId.seoyeon, score: 1 },
+			  ],
+			},
+		  ],
+		},
+	  ].map((data, i) => ({ ...data, id: generateId(), index: i + 1 })),
   }
   const chapter1Event3 = {
 	chapter_id: chapterId.chapter1,
-	next_scene_id: '6876502a92b18dbc4c996e04',
+	next_scene_id: '687691e1d198ffd8e83f91c7',
 	event: 3,
 	scenario: [
 	  {
@@ -529,6 +531,7 @@ const chapter1Event2 = {
 	  {
 		script: '(…방금, 웃은 거 맞지?)',
 		type: 'think',
+		background_sound_id:backgroundSoundId.serious3,
 		options: [
 		  {
 			id: generateId(),
@@ -564,7 +567,7 @@ const chapter1Event2 = {
   }
   const chapter1Event4 = {
 	chapter_id: chapterId.chapter1,
-	next_scene_id: '6876503bd57223e6ef3f0a09',
+	next_scene_id: '687691eb65ebd58f6c95cfa3',
 	event: 4,
 	scenario: [
 	  {
@@ -627,7 +630,6 @@ const chapter1Event2 = {
 	  },
 	  {
 		script: '병을 들어 조심스레 잔을 채운다.',
-		effect_sound_id: effectSoundId.water,
 		type: 'narration',
 	  },
 	  {
@@ -700,6 +702,7 @@ const chapter1Event2 = {
 	  {
 		script: '(이건… 그저 술기운 탓일까?)',
 		type: 'think',
+		background_sound_id:backgroundSoundId.serious3,
 		options: [
 		  {
 			id: generateId(),
@@ -735,7 +738,7 @@ const chapter1Event2 = {
   }
   const chapter1Event5 = {
 	chapter_id: chapterId.chapter1,
-	next_scene_id: '',
+	next_scene_id: '687691f80e5038a62221cb66',
 	event: 5,
 	scenario: [
 	  {
@@ -842,6 +845,7 @@ const chapter1Event2 = {
 	  {
 		script: '(나는 뭐라고 할까..)',
 		type: 'think',
+		background_sound_id:backgroundSoundId.serious3,
 		options: [
 		  {
 			id: generateId(),
@@ -874,6 +878,7 @@ const chapter1Event2 = {
 		],
 	  },
 	  {
+		background_sound_id: backgroundSoundId.basic,
 		script: '그녀는 말 없이 돌아서지만, 그 짧은 인사 한마디가 이상하게 오래 남는다.',
 		not_character: true,
 		type: 'narration',
@@ -894,7 +899,7 @@ const chapter1Event2 = {
 }
 const chapter2Event1 = {
 	chapter_id: chapterId.chapter2,
-	next_scene_id: '',
+	next_scene_id: '687692024287495b7dc8c57c',
 	event: 1,
 	scenario: [
 	  {
@@ -920,8 +925,9 @@ const chapter2Event1 = {
 		type: 'narration',
 	  },
 	  {
-		script: '어, 혹시 ○○씨 맞죠?',
+		script: '어, 혹시 user_name씨 맞죠?',
 		character_id: characterId.harin,
+		user_name:true,
 		character_image_id: characterImageId.harin_basic,
 		background_image_id: backgroundImageId.classroom,
 		type: 'text',
@@ -996,6 +1002,7 @@ const chapter2Event1 = {
 		script: '서연이 어땠어?',
 		character_id: characterId.harin,
 		type: 'text',
+		background_sound_id:backgroundSoundId.serious3,
 		options: [
 		  {
 			id: generateId(),
@@ -1029,6 +1036,7 @@ const chapter2Event1 = {
 	  },
 	  {
 		script: '아니~~~ 말 놓으라니까아~',
+		background_sound_id: backgroundSoundId.basic,
 		character_id: characterId.harin,
 		character_image_id: characterImageId.harin_upset,
 		type: 'text',
@@ -1121,7 +1129,7 @@ const chapter2Event1 = {
   }
   const chapter2Event2 = {
 	chapter_id: chapterId.chapter2,
-	next_scene_id: '',
+	next_scene_id: '6876920dc054517ba896afd0',
 	event: 2,
 	scenario: [
 	  {
@@ -1176,6 +1184,7 @@ const chapter2Event1 = {
 		script: '너가 골라줘!',
 		character_id: characterId.harin,
 		type: 'text',
+		background_sound_id:backgroundSoundId.serious3,
 		options: [
 		  {
 			id: generateId(),
@@ -1209,6 +1218,7 @@ const chapter2Event1 = {
 	  },
 	  {
 		script: '아 저녁도 먹어야되는데… 그냥 안 먹어야겠다~',
+		background_sound_id: backgroundSoundId.basic2,
 		character_id: characterId.harin,
 		type: 'text',
 	  },
@@ -1263,7 +1273,7 @@ const chapter2Event1 = {
   }
   const chapter2Event3 = {
 	chapter_id: chapterId.chapter2,
-	next_scene_id: '',
+	next_scene_id: '68769217b2128cbcacd69fd9',
 	event: 3,
 	scenario: [
 	  {
@@ -1283,7 +1293,7 @@ const chapter2Event1 = {
 		script: '소파 맞은편. 조용히 노트북을 펼친 서연, 그 앞에 앉은 건… 지후.',
 		character_image_id: characterImageId.seoyeon_basic,
 		second_character_image_id: characterImageId.jihoo_basic,
-		background_sound_id: backgroundSoundId.serious,
+		background_sound_id: backgroundSoundId.serious2,
 		type: 'narration',
 	  },
 	  {
@@ -1343,7 +1353,7 @@ const chapter2Event1 = {
 		type: 'text',
 	  },
 	  {
-		script: '(…바로 책상 옆자린데 일부로 모른척하는건가?) 저는 OO이라..',
+		script: '(…바로 책상 옆자린데 일부로 모른척하는건가?) 저는..',
 		type: 'think',
 	  },
 	  {
@@ -1412,6 +1422,7 @@ const chapter2Event1 = {
 		script: '너는 어떻게 생각해?',
 		character_id: characterId.harin,
 		character_image_id: characterImageId.harin_basic,
+		background_sound_id:backgroundSoundId.serious3,
 		type: 'text',
 		options: [
 		  {
@@ -1447,6 +1458,7 @@ const chapter2Event1 = {
 	  {
 		script: '음~ 그렇구나~',
 		character_id: characterId.harin,
+		background_sound_id: backgroundSoundId.serious2,
 		type: 'text',
 	  },
 	  {
@@ -1470,7 +1482,7 @@ const chapter2Event1 = {
   }
   const chapter2Event4 = {
 	chapter_id: chapterId.chapter2,
-	next_scene_id: '',
+	next_scene_id: '68769220feb42f3290745699',
 	event: 4,
 	scenario: [
 	  {
@@ -1688,7 +1700,7 @@ const chapter2Event1 = {
 	  },
 	  {
 		script: '그때 자전거가 빠르게 뒤에서 다가온다',
-		background_sound_id: backgroundSoundId.serious3,
+		background_sound_id: backgroundSoundId.serious1,
 		effect_sound_id: effectSoundId.bicycle, // 자전거 소리 대체 가능
 		type: 'narration',
 	  },
@@ -1724,6 +1736,7 @@ const chapter2Event1 = {
 	  {
 		script: '내 얼굴을 볼 수는 없지만, 아마 새빨간 토마토일 것이다.',
 		type: 'narration',
+		background_sound_id:backgroundSoundId.serious3,
 		options: [
 		  {
 			id: generateId(),
@@ -1757,6 +1770,7 @@ const chapter2Event1 = {
 	  },
 	  {
 		script: '헤~ 뭐야~',
+		background_sound_id: backgroundSoundId.basic2,
 		character_id: characterId.harin,
 		character_image_id: characterImageId.harin_basic,
 		type: 'text',
@@ -1773,7 +1787,6 @@ const chapter2Event1 = {
 	  {
 		script: '근데 아무한테나 그러면 안되는거 알지?~',
 		character_id: characterId.harin,
-		background_sound_id: backgroundSoundId.basic2,
 		type: 'text',
 	  },
 	  {
@@ -1794,7 +1807,7 @@ const chapter2Event1 = {
   }
   const chapter2Event5 = {
 	chapter_id: chapterId.chapter2,
-	next_scene_id: '',
+	next_scene_id: '6876922cc647e8d61f58ccc4',
 	event: 5,
 	scenario: [
 	  {
@@ -1882,7 +1895,6 @@ const chapter2Event1 = {
 		script: '…사실 말인데.',
 		character_id: characterId.harin,
 		character_image_id: characterImageId.harin_basic,
-		background_sound_id: backgroundSoundId.nervous,
 		type: 'text',
 	  },
 	  {
@@ -1951,6 +1963,7 @@ const chapter2Event1 = {
 	  {
 		script: '응? 뭐라고? 잘 안들렸어.',
 		character_id: characterId.harin,
+		background_sound_id:backgroundSoundId.serious3,
 		options: [
 		  {
 			id: generateId(),
@@ -1985,6 +1998,7 @@ const chapter2Event1 = {
 	  {
 		script: '흐음~',
 		character_id: characterId.harin,
+		background_sound_id: backgroundSoundId.basic3,
 		type: 'text',
 	  },
 	  {
@@ -2041,5 +2055,1115 @@ const chapter2Event1 = {
 	  },
 	].map((data, i) => ({ ...data, id: generateId(), index: i + 1 })),
   }
+  const chapter3Event1 = {
+	chapter_id: chapterId.chapter3,
+	next_scene_id: '68769234a0a3f70c8c5faa39',
+	event: 1,
+	scenario: [
+		{
+			script: '몰입실 안. 새로운 한 주가 시작됐다. 한쪽 벽에 뜬 조편성 공지. 다들 핸드폰을 들여다보며 웅성거린다.',
+			where: '몰입실',
+			when: '목요일 오후 2시',
+			background_image_id: backgroundImageId.classroom,
+			background_sound_id: backgroundSoundId.basic,
+			not_character: true,
+			type: 'narration',
+		},
+		{
+			script: '자자~ 3주차부터는 직접 팀원 선택 가능합니다~!',
+			character_id: characterId.nubzuki,
+			character_image_id: characterImageId.nubzuki_basic,
+			type: 'text',
+		},
+		{
+			script: '그 말이 끝나자마자 한 남자가 손을 번쩍 든다.',
+			type: 'narration',
+		},
+		{
+			script: '그럼… 서연아, 이번 주도 같이 하자.',
+			character_id: characterId.jihoo,
+			character_image_id: characterImageId.jihoo_basic,
+			type: 'text',
+		},
+		{
+			script: '몰입실 안의 공기가 잠깐 정지한다.',
+			background_sound_id: backgroundSoundId.serious2,
+			type: 'narration',
+		},
+		{
+			script: '(…서연 씨랑, 또? 지후랑?)',
+			type: 'think',
+		},
+		{
+			script: '서연은 말없이 지후를 보다가, 내 쪽을 천천히 바라본다.',
+			second_character_image_id: characterImageId.seoyeon_basic,
+			type: 'narration',
+		},
+		{
+			script: '…너는 어떻게 할 거야?',
+			character_id: characterId.seoyeon,
+			type: 'text',
+		},
+		{
+			script: '…나, 나요?',
+			character_id: characterId.hero,
+			type: 'text',
+		},
+		{
+			script: '순간 몰입실 안의 시선이 나에게로 쏠린다.',
+			type: 'narration',
+		},
+		{
+			script: '한 박자 늦게 심장이 튄다.',
+			effect_sound_id: effectSoundId.heart_beat,
+			type: 'narration',
+		},
+		{
+			script: '(…왜 나한테 물어본 거지? 선택하라는 건가?)',
+			type: 'think',
+			background_sound_id:backgroundSoundId.serious3,
+			options: [
+				{
+					id: generateId(),
+					text: '“나는…잘 모르겠어…”',
+					score_list: [
+						{ id: generateId(), character_id: characterId.seoyeon, score: 0 },
+						{ id: generateId(), character_id: characterId.harin, score: 0 },
+					],
+				},
+				{
+					id: generateId(),
+					text: '“둘이 또 하기로 한거 아니야?”',
+					score_list: [
+						{ id: generateId(), character_id: characterId.seoyeon, score: -1 },
+						{ id: generateId(), character_id: characterId.harin, score: 2 },
+					],
+				},
+				{
+					id: generateId(),
+					text: '“세명은 좀 그런데..”',
+					score_list: [
+						{ id: generateId(), character_id: characterId.seoyeon, score: 1 },
+						{ id: generateId(), character_id: characterId.harin, score: 1 },
+					],
+				},
+				{
+					id: generateId(),
+					text: '같이 하면 좋지..',
+					score_list: [
+						{ id: generateId(), character_id: characterId.seoyeon, score: 2 },
+						{ id: generateId(), character_id: characterId.harin, score: -1 },
+					],
+				},
+			],
+		},
+		{
+			script: '잠깐! 나 지금 완전 소외된 거야??',
+			background_sound_id: backgroundSoundId.serious2,
+			character_id: characterId.harin,
+			character_image_id: characterImageId.harin_upset,
+			type: 'text',
+		},
+		{
+			script: '하린이 씩씩하게 내 쪽으로 걸어온다. 손엔 아직 커피도 들려 있다.',
+			type: 'narration',
+		},
+		{
+			script: '같이 밥도 먹고, 빵도 나눠 먹고, 밤에 별도 같이 봤는데',
+			character_id: characterId.harin,
+			type: 'text',
+		},
+		{
+			script: '그냥 딱 잘라서 너희끼리 하겠다고~? 나 진짜 상처받는다?',
+			character_id: characterId.harin,
+			type: 'text',
+		},
+		{
+			script: '아 그런 건 아닌데. 그냥—',
+			character_id: characterId.jihoo,
+			type: 'text',
+		},
+		{
+			script: '그럼 넷이 같이 하면 되잖아! 우리 4명, 딱 밸런스 좋은 조 아님?',
+			character_id: characterId.harin,
+			type: 'text',
+		},
+		{
+			script: '…뭐, 인원만 괜찮으면 나도 상관없지.',
+			character_id: characterId.jihoo,
+			type: 'text',
+		},
+		{
+			script: '너는 어때?',
+			character_id: characterId.harin,
+			type: 'text',
+		},
+		{
+			script: '(…뭐지 이 분위기. 세 명 사이에 낀 느낌인데.)',
+			type: 'think',
+		},
+		{
+			script: '그, 그러면… 다 같이 하는 것도 나쁘지 않은 것 같아요.',
+			character_id: characterId.hero,
+			type: 'text',
+		},
+		{
+			script: '그 순간, 멀찍이서 넙죽이가 뭔가를 중얼거린다.',
+			character_id: characterId.nubzuki,
+			character_image_id: characterImageId.nubzuki_basic,
+			type: 'narration',
+		},
+		{
+			script: '(…어? 최대 3인인데? 그리고 했던 사람과는 또 같이 안 된다고 내가 말 안했었나…?)',
+			character_id: characterId.nubzuki,
+			type: 'think',
+		},
+		{
+			script: '(근데… 뭐, 됐어. 어차피 이 풍경, 보기 좋으니까.)',
+			character_id: characterId.nubzuki,
+			type: 'think',
+		},
+		{
+			script: '이상한 조합. 서로 다른 세 성격.',
+			not_character: true,
+			type: 'narration',
+		},
+		{
+			script: '그리고 그 중심에 있는… 나.',
+			type: 'narration',
+		},
+	].map((data, i) => ({...data, id: generateId(), index: i + 1}))
+};
+const chapter3Event2 = {
+	chapter_id: chapterId.chapter3,
+	next_scene_id: '6876923d417c3b83dafcf3a6',
+	event: 2,
+	scenario: [
+	  {
+		script: '늦은 저녁, 하린과 함께 잠깐 바람 쐬러 복도로 나왔다.',
+		where: '몰입실',
+		when: '목요일 오후 2시',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_basic,
+		background_image_id: backgroundImageId.middle_rounge,
+		background_sound_id: backgroundSoundId.basic,
+		type: 'narration',
+	  },
+	  {
+		script: '자동판매기 앞에서 음료를 하나 뽑아주자, 하린이 웃으며 말한다.',
+		type: 'narration',
+	  },
+	  {
+		script: '꺄~ 역시 센스쟁이!',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '그냥 네가 자판기 앞에서 한참 서 있길래…',
+		character_id: characterId.hero,
+		type: 'text',
+	  },
+	  {
+		script: '내가 또 선택장애 있는 거 어케 알았어~?',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '웃으며 장난치듯 내 팔을 툭 친다.',
+		type: 'narration',
+	  },
+	  {
+		script: '아 진짜 너 없었으면 이번 주 조 힘들었을 걸?',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '지후는 혼자 잘났다고 하고, 서연이는 말 없고…',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '너만 사람 같아 진짜로!',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '…그렇게까지 말하면 좀 곤란하잖아.',
+		character_id: characterId.hero,
+		type: 'text',
+	  },
+	  {
+		script: '에이~ 부끄러워하기 있긔 없긔~?',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '그 순간, 몰입실 문이 열리며 누군가 나오는 소리가 들린다.',
+		type: 'narration',
+	  },
+	  {
+		script: '고개를 돌리니… 서연.',
+		second_character_image_id: characterImageId.seoyeon_basic,
+		background_sound_id: backgroundSoundId.serious2,
+		type: 'narration',
+	  },
+	  {
+		script: '그녀는 우릴 바라보다, 잠시 눈이 마주친다.',
+		type: 'narration',
+	  },
+	  {
+		script: '무표정. 하지만 어딘가 조금… 무심하지 않은 눈빛.',
+		type: 'narration',
+	  },
+	  {
+		script: '(…지금, 본 거야? 뭘 생각하는 걸까.)',
+		type: 'think',
+	  },
+	  {
+		script: '어? 서연이다~',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: 'user_name이가 음료수 사줬다아~',
+		user_name: true,
+		josa:true,
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '아 그래?',
+		character_id: characterId.seoyeon,
+		type: 'text',
+	  },
+	  {
+		script: '우리 잠깐 쉬고 있었는데, 같이 좀 놀자!',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '난 괜찮아.',
+		character_id: characterId.seoyeon,
+		type: 'text',
+	  },
+	  {
+		script: '딱딱 끊긴 말. 그녀는 음료도 뽑지 않은 채, 몰입실 안으로 다시 들어간다.',
+		type: 'narration',
+	  },
+	  {
+		script: '(왜 굳이 나왔던 걸까… 뭐라도 말하고 싶었던 걸까.)',
+		type: 'think',
+	  },
+	  {
+		script: '10분 후, 다시 자리에 앉았을 때. 내 노트북 화면에 낯선 파일이 하나 떠 있다.',
+		background_sound_id: backgroundSoundId.basic2,
+		type: 'narration',
+	  },
+	  {
+		script: '/frontend/components/LayoutReview.tsx',
+		type: 'narration',
+	  },
+	  {
+		script: '열어보니, 내가 만든 UI의 작은 수정 사항들과, 짧은 문장 하나.',
+		type: 'narration',
+	  },
+	  {
+		script: '“잡담할 시간 없어요.”',
+		type: 'narration',
+	  },
+	  {
+		script: '(누가…? )',
+		type: 'think',
+	  },
+	  {
+		script: '서연이가 앉은 곳을 바라본다…',
+		character_image_id: characterImageId.seoyeon_side,
+		type: 'narration',
+	  },
+	  {
+		script: '(설마 서연이?)',
+		type: 'think',
+	  },
+	  {
+		script: '(…질투? 아님… 그냥 조언?)',
+		type: 'think',
+	  },
+	  {
+		script: '(서연이에게 몸을 기울이며)혹시 이거…',
+		character_id: characterId.hero,
+		type: 'think',
+	  },
+	  {
+		script: '둘이 뭐해?',
+		character_id: characterId.harin,
+		second_character_image_id: characterImageId.seoyeon_basic,
+		type: 'text',
+		background_sound_id:backgroundSoundId.serious3,
+		options: [
+		  {
+			id: generateId(),
+			text: '“아 로그인 기능 구현하는데 좀 잘 안되네...”',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 2 },
+			  { id: generateId(), character_id: characterId.harin, score: 1 },
+			]
+		  },
+		  {
+			id: generateId(),
+			text: '“뭐 안해..”',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 0 },
+			  { id: generateId(), character_id: characterId.harin, score: 2 },
+			]
+		  },
+		  {
+			id: generateId(),
+			text: '“아무것도 아니야”',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 1 },
+			  { id: generateId(), character_id: characterId.harin, score: -1 },
+			]
+		  },
+		  {
+			id: generateId(),
+			text: '“내 노트북 해킹당했나봐, 누가 이상한걸 남겨놨네.”',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: -1 },
+			  { id: generateId(), character_id: characterId.harin, score: 0 },
+			]
+		  },
+		]
+	  },
+	].map((data, i) => ({ ...data, id: generateId(), index: i + 1 }))
+  };
+  const chapter3Event3 = {
+	chapter_id: chapterId.chapter3,
+	next_scene_id: '68769244732da0b9424f3667',
+	event: 3,
+	scenario: [
+	  // 이벤트 3 시작
+	  {
+		script: '밤 11시를 넘긴 시간.',
+		where: '크래프톤빌딩 라운지',
+		when: '토요일 밤 11시',
+		background_image_id: backgroundImageId.entrance_rounge2,
+		background_sound_id: backgroundSoundId.basic,
+		not_character:true,
+		effect_sound_id: effectSoundId.keyboard,
+		type: 'narration',
+	  },
+	  {
+		script: '라운지에는 몇 명만 남아있고, 자판기 소리와 키보드 타이핑만이 울린다.',
+		type: 'narration',
+	  },
+	  {
+		script: '으아~ 나 진짜 졸려 죽겠어…',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_basic,
+		type: 'text',
+	  },
+	  {
+		script: '하린은 노트북 화면을 넘기며 내 어깨에 살짝 기대온다.',
+		type: 'narration',
+	  },
+	  {
+		script: '(…이런 거, 익숙하지 않은데.)',
+		type: 'think',
+	  },
+	  {
+		script: '이 부분만 고치고 같이 컵라면 먹으러 갈래?',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '그 순간, 조용하던 서연의 타자 소리가 ‘툭’ 하고 멈춘다.',
+		type: 'narration',
+	  },
+	  {
+		script: '…아직 할 것도 많은데, 집중이 먼저예요.',
+		character_id: characterId.seoyeon,
+		character_image_id: characterImageId.seoyeon_angry,
+		type: 'text',
+	  },
+	  {
+		script: '말끝이 차갑다. 하린이 슬쩍 고개를 든다.',
+		type: 'narration',
+	  },
+	  {
+		script: '아, 미안~ 우리 너무 시끄러웠나봐.',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '아니요. 그런 의미가 아니에요. 슬슬 효율을 올려야 할 것 같아서..',
+		character_id: characterId.seoyeon,
+		type: 'text',
+	  },
+	  {
+		script: '그럼 효율 좋게, 라면 먹고 다시 집중할게요~',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '하린이 날 손으로 끌어당기듯 일어선다. 우리는 컵라면 두 개를 들고 복도로 나간다.',
+		type: 'narration',
+	  },
+	  {
+		script: '몰입실에 들어가자, 실내 분위기가 조금 이상하다.',
+		where: '몰입실',
+		when: '20분 후',
+		background_image_id: backgroundImageId.classroom,
+		background_sound_id: backgroundSoundId.serious1,
+		type: 'narration',
+	  },
+	  {
+		script: '서연은 여전히 말이 없고, 지후는 그녀 옆자리로 바짝 붙어 앉아 있다.',
+		character_image_id: characterImageId.seoyeon_basic,
+		second_character_image_id: characterImageId.jihoo_basic,
+		type: 'narration',
+	  },
+	  {
+		script: '서연 씨는, 말은 없어도 되게 섬세하단 말이야.',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '내가 아는 사람 중에… 제일 집중력 좋아.',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '서연은 대답하지 않지만, 키보드 소리만 규칙적으로 울린다.',
+		effect_sound_id: effectSoundId.keyboard,
+		type: 'narration',
+	  },
+	  {
+		script: '서연이랑 나랑 스타일 비슷해서, 잘 맞는 것 같지 않아?',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '지후가 주인공 쪽으로 돌아본다.',
+		type: 'narration',
+	  },
+	  {
+		script: '(나한테 물어보는건가??…)',
+		type: 'think',
+	  },
+	  {
+		script: '응??',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '(물어보는거네)',
+		type: 'think',
+		background_sound_id:backgroundSoundId.serious3,
+		options: [
+		  {
+			id: generateId(),
+			text: '글쎄요..',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 1 },
+			  { id: generateId(), character_id: characterId.harin, score: 0 }
+			]
+		  },
+		  {
+			id: generateId(),
+			text: '(비아냥거리면서) 잘 어울리시네요',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 0 },
+			  { id: generateId(), character_id: characterId.harin, score: 1 }
+			]
+		  },
+		  {
+			id: generateId(),
+			text: '아니요',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 2 },
+			  { id: generateId(), character_id: characterId.harin, score: -1 }
+			]
+		  },
+		  {
+			id: generateId(),
+			text: '음.. 그런것 같네요',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: -1 },
+			  { id: generateId(), character_id: characterId.harin, score: 2 }
+			]
+		  }
+		]
+	  },
+	  {
+		script: '내 말에 조용하던 서연의 마우스가 ‘딱’ 하고 멈춘다.',
+		second_character_image_id: characterImageId.seoyeon_side,
+		background_sound_id: backgroundSoundId.serious1,
+		type: 'narration',
+	  },
+	  {
+		script: '그녀는 천천히 고개를 돌려 나를 바라본다.',
+		second_character_image_id: characterImageId.seoyeon_basic,
+		type: 'narration',
+	  },
+	  {
+		script: '표정은 여전히 무표정하지만, 눈빛엔 어딘가 말 못 할 감정이 어른댄다.',
+		type: 'narration',
+	  },
+	  {
+		script: '…나는, 그렇게 생각 안 해요.',
+		character_id: characterId.seoyeon,
+		character_image_id: characterImageId.seoyeon_angry,
+		type: 'text',
+	  },
+	  {
+		script: '지후가 머쓱하게 웃으며 시선을 피한다.',
+		type: 'narration',
+	  },
+	  {
+		script: '…역시, 넌 서연 씨보다 나랑 더 잘 맞아…',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_shame,
+		type: 'text',
+	  },
+	  {
+		script: '어쩌면 지금 이 팀은, 코드보다 더 복잡한 감정들로 얽히기 시작했다.',
+		type: 'narration',
+	  },
+	  {
+		script: '그리고 그 중심에… 내가 있다.',
+		type: 'narration',
+	  },
+	].map((data, i) => ({ ...data, id: generateId(), index: i + 1 })),
+  };
+  const chapter3Event4 = {
+	chapter_id: chapterId.chapter3,
+	next_scene_id: '6876924d4d3d08967b18373e',
+	event: 4,
+	scenario: [
+	  {
+		script: '일요일 오전, 갑작스러운 하린의 카톡 한 통.',
+		where: '기숙사',
+		when: '일요일 오전',
+		background_image_id: backgroundImageId.kakao_talk,
+		background_sound_id: backgroundSoundId.basic,
+		not_character: true,
+		type: 'narration'
+	  },
+	  {
+		script: 'user_name아! 오늘 새로 나온 공포영화 보러 안 갈래?',
+		effect_sound_id: effectSoundId.kakao_talk,
+		user_name:true,
+		character_id: characterId.harin,
+		type: 'text'
+	  },
+	  {
+		script: '진짜 무섭다는데… 내가 혼자 보기엔 좀… 무서워서ㅎㅎ',
+		effect_sound_id: effectSoundId.kakao_talk,
+		character_id: characterId.harin,
+		type: 'text'
+	  },
+	  {
+		script: '오늘? 괜찮아.',
+		effect_sound_id: effectSoundId.kakao_talk,
+		character_id: characterId.hero,
+		type: 'text'
+	  },
+	  {
+		script: '짱! 바로 예매할게~ CGV 3시꺼!',
+		character_id: characterId.harin,
+		type: 'text'
+	  },
+	  {
+		script: '오랜만의 여유. 영화도, 하린과의 외출도 나쁘지 않다.',
+		background_image_id: backgroundImageId.city,
+		background_sound_id: backgroundSoundId.basic2,
+		type: 'narration'
+	  },
+	  {
+		script: '입구 앞, 팝콘을 사고 있을 무렵— 낯익은 목소리.',
+		type: 'narration'
+	  },
+	  {
+		script: '…너희, 여기서 뭐해?',
+		character_id: characterId.seoyeon,
+		character_image_id: characterImageId.seoyeon_basic,
+		type: 'text'
+	  },
+	  {
+		script: '무표정한 얼굴이지만 어딘가 꾸며온 티가 난다.',
+		type: 'narration'
+	  },
+	  {
+		script: '헉 서연이다! 너 여기서 뭐해? 설마… 혼자 영화보러?',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_basic,
+		type: 'text'
+	  },
+	  {
+		script: '…아니, 친구가 펑크 내서. 그냥 가려다가, 너희가 보여서.',
+		character_id: characterId.seoyeon,
+		type: 'text'
+	  },
+	  {
+		script: '오히려 좋아! user_name이랑 나랑 둘이 보려고 했는데, 같이 보자!',
+		character_id: characterId.harin,
+		user_name:true,
+		josa:true,
+		type: 'text'
+	  },
+	  {
+		script: '이렇게… 셋이 나란히 좌석에 앉게 된다.',
+		background_image_id: backgroundImageId.movie,
+		background_sound_id: backgroundSoundId.serious1,
+		type: 'narration'
+	  },
+	  {
+		script: '어두운 상영관, 팝콘 냄새. 하린은 내 옆에 앉아 활짝 웃는다.',
+		type: 'narration'
+	  },
+	  {
+		script: '무서울 땐 내 팔 붙잡아도 돼~ 내가 잡아줄게 헤헷.',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_smile,
+		type: 'text'
+	  },
+	  {
+		script: '그 말에 은근히 긴장된다… 그리고 곧 영화가 시작된다.',
+		type: 'narration'
+	  },
+	  {
+		script: '초반, 갑작스러운 점프 스케어 장면.',
+		type: 'narration'
+	  },
+	  {
+		script: '꺄악!',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_shame,
+		type: 'text'
+	  },
+	  {
+		script: '하린이 내 팔을 움켜잡는다.',
+		type: 'narration'
+	  },
+	  {
+		script: '그러다 어느 순간— 반대쪽 팔에도 부드러운 감촉이 느껴진다.',
+		character_image_id: characterImageId.seoyeon_shame,
+		type: 'narration'
+	  },
+	  {
+		script: '조용히… 서연의 손이 내 팔을 살짝 붙잡고 있다.',
+		type: 'narration'
+	  },
+	  {
+		script: '(…지금 뭐지?)',
+		type: 'think'
+	  },
+	  {
+		script: '고개를 돌리니— 그녀는 부끄러운듯 화면만 응시하고 있다.',
+		type: 'narration'
+	  },
+	  {
+		script: '영화가 끝나고, 관객들이 일어나는 와중',
+		type: 'narration'
+	  },
+	  {
+		script: '으으 진짜 무서웠어… user_name 덕분에 살았어ㅠㅠ',
+		character_id: characterId.harin,
+		user_name:true,
+		character_image_id: characterImageId.harin_basic,
+		type: 'text'
+	  },
+	  {
+		script: '…그렇게 무서웠어?',
+		character_id: characterId.hero,
+		type: 'text'
+	  },
+	  {
+		script: '당연하지~ 아, 근데 서연이도 잘 버티던데?',
+		character_id: characterId.harin,
+		type: 'text'
+	  },
+	  {
+		script: '별로 안 무서웠어요. user_name이 있어서 편했나 봐요.',
+		character_id: characterId.seoyeon,
+		user_name:true,
+		josa:true,
+		character_image_id: characterImageId.seoyeon_basic,
+		type: 'text'
+	  },
+	  {
+		script: '그녀는 나를 향해 천천히 고개를 돌린다.',
+		type: 'narration'
+	  },
+	  {
+		script: '적어도 지후보다는.',
+		character_id: characterId.seoyeon,
+		type: 'text'
+	  },
+	  {
+		script: '그 한마디에 하린의 웃음이 사라지고, 주변 공기가 잠시 정적에 휩싸인다.',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_upset,
+		type: 'narration'
+	  },
+	  {
+		script: '…지후? 갑자기 왜 그 얘기?',
+		character_id: characterId.harin,
+		type: 'text'
+	  },
+	  {
+		script: '아니, 그냥. 조용히 함께 있는 게 편하다고 느껴지는 사람이 있다고 생각했어요.',
+		character_id: characterId.seoyeon,
+		character_image_id: characterImageId.seoyeon_shame,
+		type: 'text'
+	  },
+	  {
+		script: '그녀의 시선은 계속 나를 향해 있다.',
+		type: 'narration',
+		background_sound_id:backgroundSoundId.serious3,
+		options: [
+		  {
+			id: generateId(),
+			text: '공포영화치고는 별로 안 무섭긴 했어',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 1 },
+			  { id: generateId(), character_id: characterId.harin, score: 1 }
+			]
+		  },
+		  {
+			id: generateId(),
+			text: '지후보단 내가 낫다 그 말이네? (웃으며)',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 0 },
+			  { id: generateId(), character_id: characterId.harin, score: 0 }
+			]
+		  },
+		  {
+			id: generateId(),
+			text: '나는 잘 모르겠네...',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: -1 },
+			  { id: generateId(), character_id: characterId.harin, score: 2 }
+			]
+		  },
+		  {
+			id: generateId(),
+			text: '나도 서연이가 있어서 편했어',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 2 },
+			  { id: generateId(), character_id: characterId.harin, score: -1 }
+			]
+		  }
+		]
+	  },
+	  {
+		script: '흠, 그럼 다음엔 나 없이 둘이 보러 가면 되겠네~?',
+		character_id: characterId.harin,
+		background_sound_id: backgroundSoundId.serious1,
+		type: 'text'
+	  },
+	  {
+		script: '(지금, 이상한 전선이 생긴 기분이다…)',
+		type: 'think'
+	  },
+	  {
+		script: '내 앞에 앉아 있던 두 사람은 이제 완전히 다른 표정이다.',
+		type: 'narration'
+	  }
+	].map((data, i) => ({ ...data, id: generateId(), index: i + 1 }))
+  };
+  const chapter3Event5 = {
+	chapter_id: chapterId.chapter3,
+	next_scene_id: '',
+	event: 5,
+	scenario: [
+	  {
+		script: '프로젝트 발표는 무사히 끝났다. 살짝 엉켜있던 코드도 마감 전날 밤샘 덕에 어찌어찌 돌아갔다.',
+		where: '몰입실',
+		when: '수요일 오후 9시',
+		background_image_id: backgroundImageId.classroom,
+		background_sound_id: backgroundSoundId.basic,
+		type: 'narration',
+	  },
+	  {
+		script: '하린이 폰을 만지작거리다가 나를 힐끔 본다',
+		type: 'narration',
+	  },
+	  {
+		script: '우리… 오늘 회식할래?',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_basic,
+		type: 'text',
+	  },
+	  {
+		script: '다 끝났는데 딱 한 잔만 하면 딱일 것 같아~',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '다 같이?',
+		character_id: characterId.hero,
+		type: 'text',
+	  },
+	  {
+		script: '아냐~ 그냥 우리 둘만~ㅎㅎ 고생했잖아 우리.',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '살짝 웃으며 가방을 드는 하린. 뭔가 은근히 설레는 공기가 맴돈다.',
+		type: 'narration',
+	  },
+	  {
+		script: '그때—',
+		type: 'narration',
+	  },
+	  {
+		script: '서연이가 언제 들었는지 모르게 조용히 다가온다',
+		type: 'narration',
+	  },
+	  {
+		script: '…술 마신다면서요. 같이 가요.',
+		character_id: characterId.seoyeon,
+		character_image_id: characterImageId.seoyeon_shame,
+		type: 'text',
+	  },
+	  {
+		script: '아…응, 같이 가도 되지?',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_upset,
+		type: 'text',
+	  },
+	  {
+		script: '어색한 공기. 그리고 뒤에서 지후가 느긋하게 나타난다.',
+		type: 'narration',
+	  },
   
-module.exports = {chapter1Event1, chapter1Event2, chapter1Event3, chapter1Event4, chapter1Event5, characterId}
+	  // 회식 장면
+	  {
+		script: '결국 넷이 모였다. 서연, 하린, 지후, 그리고 나.',
+		where: '훌랄라',
+		when: '오후 10시',
+		background_image_id: backgroundImageId.chicken,
+		background_sound_id: backgroundSoundId.loud,
+		type: 'narration',
+	  },
+	  {
+		script: '목재 테이블 위, 맥주와 간단한 안주들이 놓인다.',
+		type: 'narration',
+	  },
+	  {
+		script: '아~~ 진짜 끝났다~~!!',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_smile,
+		type: 'text',
+	  },
+	  {
+		script: '야~ 오늘은 다들 수고했다. 회식 자리엔 역시 건배사가 빠질 수 없지.',
+		character_id: characterId.jihoo,
+		character_image_id: characterImageId.jihoo_basic,
+		type: 'text',
+	  },
+	  {
+		script: '건배사~? 나 그런 거 잘 몰라…',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '그럼 내가 하나 뽑을게.',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '‘올해 몰입캠프에서 제일 먼저 커플 되는 사람은…?’',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '잔을 치켜들며, 의미심장하게 나와 하린, 그리고 서연 사이를 바라본다.',
+		type: 'narration',
+	  },
+	  {
+		script: '서연은 무표정하게 맥주잔을 들고 있다. 하린은 갑자기 고개를 숙이며 젓가락만 만지작거린다.',
+		type: 'narration',
+	  },
+	  {
+		script: '자, 그럼! 다 같이—',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '커플은 ○○와… 누구?',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '그건 너무 진지한 건배사 아냐…?',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_angry,
+		type: 'text',
+	  },
+	  {
+		script: '술맛 떨어지네요.',
+		character_id: characterId.seoyeon,
+		character_image_id: characterImageId.seoyeon_angry,
+		type: 'text',
+	  },
+	  {
+		script: '어라~ 농담이었는데',
+		character_id: characterId.jihoo,
+		character_image_id: characterImageId.jihoo_basic,
+		type: 'text',
+	  },
+  
+	  // 술자리 중 감정 변화
+	  {
+		script: '근데 정말 몰입캠프 1호 커플이 누가 될지 다들 안 궁금한거야?',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '또 왜? ㅋㅋㅋ',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_shame,
+		type: 'text',
+	  },
+	  {
+		script: '근데… 음, 나는…',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '슬쩍 내 쪽을 힐끔 본다.',
+		type: 'narration',
+	  },
+	  {
+		script: '조용한 사람일수록, 의외로 빨리 연애할 수 있을지도?',
+		character_id: characterId.harin,
+		type: 'text',
+	  },
+	  {
+		script: '그럴지도..',
+		character_id: characterId.seoyeon,
+		character_image_id: characterImageId.seoyeon_shame,
+		type: 'text',
+	  },
+  
+	  {
+		script: '내일이면 또 새로운 팀이네.',
+		character_id: characterId.jihoo,
+		character_image_id: characterImageId.jihoo_basic,
+		type: 'text',
+	  },
+	  {
+		script: '너는 생각해둔거 있어?',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '그 순간 하린의 눈동자가 잔을 넘어서 나를 향해 꽂힌다. 서연도, 그 말에 잔을 멈춘다.',
+		type: 'narration',
+		background_sound_id:backgroundSoundId.serious3,
+		options: [
+		  {
+			id: generateId(),
+			text: '“…글쎼요”',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 0 },
+			  { id: generateId(), character_id: characterId.harin, score: 0 },
+			],
+		  },
+		  {
+			id: generateId(),
+			text: '“그건 말 안 해도 알잖아.” (서연에게 미소)',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 2 },
+			  { id: generateId(), character_id: characterId.harin, score: -1 },
+			],
+		  },
+		  {
+			id: generateId(),
+			text: '“그건 말 안 해도 알잖아.” (하린에게 미소)',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: -1 },
+			  { id: generateId(), character_id: characterId.harin, score: 2 },
+			],
+		  },
+		  {
+			id: generateId(),
+			text: '“뭐…누군지 말 안 해도 티 나지 않아?”',
+			score_list: [
+			  { id: generateId(), character_id: characterId.seoyeon, score: 1 },
+			  { id: generateId(), character_id: characterId.harin, score: 1 },
+			],
+		  },
+		],
+	  },
+	  {
+		script: '밖으로 나오는 길.',
+		background_sound_id: backgroundSoundId.loud,
+		background_image_id: backgroundImageId.street,
+		type: 'narration',
+	  },
+	  {
+		script: '술기운은 살짝 올랐고, 다들 조용히 걷고 있다.',
+		type: 'narration',
+	  },
+	  {
+		script: '…아까, 그 질문 진짜로 대답해줬으면 좋았을 텐데.',
+		character_id: characterId.harin,
+		character_image_id: characterImageId.harin_shame,
+		type: 'text',
+	  },
+	  {
+		script: '…무슨 질문?',
+		character_id: characterId.hero,
+		type: 'text',
+	  },
+	  {
+		script: '하린이 내 볼을 살짝 찌르고는 앞장서 걸어간다.',
+		character_image_id: characterImageId.harin_back,
+		type: 'narration',
+	  },
+	  {
+		script: '뒤에서, 지후가 서연에게 귓속말을 던진다.',
+		character_id: characterId.jihoo,
+		second_character_image_id: characterImageId.seoyeon_side,
+		character_image_id: characterImageId.jihoo_basic,
+		type: 'text',
+	  },
+	  {
+		script: '아까 내가 또 같이 할거냐고 물었던거, 내일은 진짜로 대답해줘요.',
+		character_id: characterId.jihoo,
+		type: 'text',
+	  },
+	  {
+		script: '서연은 아무 대꾸 없이 가로등 아래를 걷는다.',
+		character_id: characterId.seoyeon,
+		character_image_id: characterImageId.seoyeon_basic,
+		type: 'narration',
+	  },
+	  {
+		script: '표정 없는 그 얼굴이 어쩐지 조금 더 복잡해 보인다.',
+		type: 'narration',
+	  },
+	  {
+		script: '캠프 3주차가 끝나간다.',
+		type: 'narration',
+	  },
+	  {
+		script: '그런데 왜, 마음은 더 복잡해지는 걸까.',
+		type: 'narration',
+	  },
+	  {
+		script: '내일은…어떻게 되려나….',
+		type: 'narration',
+	  },
+	].map((data, i) => ({ ...data, id: generateId(), index: i + 1 })),
+  };
+module.exports = {
+	chapter1Event1, chapter1Event2, chapter1Event3, chapter1Event4, chapter1Event5, 
+	chapter2Event1, chapter2Event2,chapter2Event3, chapter2Event4, chapter2Event5,
+	chapter3Event1, chapter3Event2,chapter3Event3, chapter3Event4, chapter3Event5,
+	characterId
+}
