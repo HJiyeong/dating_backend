@@ -88,6 +88,7 @@ const eventInit = {
 	character_image_id:'',
 	second_character_image_id:'',
 	background_image_id:'',
+	effect_sound_id:'',
 	background_sound_id:'',
 	type:'',
 	character_action_image_id:'',

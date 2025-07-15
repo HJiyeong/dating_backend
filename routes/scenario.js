@@ -5,11 +5,8 @@ const authService = require("../services/auth")
 // 전체 시나리오 조회
 router.get('/current', async (req, res) => {
 	try{
-		console.log('start_current1')
 		const auth = await authService.verify(req.headers.authorization)
-		console.log(auth)
 		const scene = await scenarioService.getCurrentSaveScenario(auth.user_id)
-		console.log('start_current3')
 		return res.status(200).send({scene: scene})
 	}
 	catch(e){

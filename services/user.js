@@ -7,7 +7,7 @@ const getToken = async(user_id) => {
 	const coll_user = await collection('user');
 	const user = await coll_user.findOne({_id: new ObjectId(user_id), removed_at: null})
 	if(!user) return {status:'fail', message:'not_user'}
-	const token = await authService.sign(user._id.toString())
+	const token = await authService.sign(user._id.toString(), user.name)
 	if(token.status == 'error') return {status:'fail', message:'not_token'}
 	return {status: 'success', token}
 }
