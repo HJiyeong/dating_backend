@@ -2,6 +2,7 @@ const {collection} = require('../services/db')
 const authService = require('../services/auth');
 const { ObjectId } = require("mongodb");
 const { generateId } = require('../utils/generateId');
+const {characterId} = require('../utils/scenarioList')
 const getToken = async(user_id) => {
 	const coll_user = await collection('user');
 	const user = await coll_user.findOne({_id: new ObjectId(user_id), removed_at: null})
@@ -17,11 +18,11 @@ const createUser = async(kakao_id, name) => {
 		name: name,
 		save_slot:[{
 			id: generateId(),
-			scene_id: "",
-			is_main:true,
+			scene_id: "6876061f031feeef49e3f925",
+			is_current:true,
 			love_scores:[
-				{id: generateId(), character_id:"", score:0},
-				{id: generateId(), character_id:"", score:0}
+				{id: generateId(), character_id:characterId.seoyeon, score:0},
+				{id: generateId(), character_id:characterId.harin, score:0}
 			]
 		}],
 		created_at: new Date(),
@@ -32,7 +33,6 @@ const createUser = async(kakao_id, name) => {
 	return insertedId.toString()
 }
 const checkExist = async(kakao_id) => {
-	console.log('check_exist')
 	const coll_user = await collection('user')
 	const user = await coll_user.findOne({kakao_id: kakao_id, removed_at: null})
 	if(user) return {user_id: user._id.toString(), kakao_id: kakao_id, is_exist:true}

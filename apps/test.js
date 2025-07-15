@@ -1,6 +1,7 @@
 const {collection} = require('../services/db')
 const {generateId} = require('../utils/generateId')
 const { ObjectId } = require("mongodb");
+const {chapter1Event1} = require('../utils/scenarioList')
 const uploadChapter = async(num, title='') => {
 	const coll = await collection('chapter')
 	const doc = {
@@ -217,8 +218,7 @@ const audioPUshData = [
 	{name:'serious2.mp3', bucket: audioBucket, size: '8.2MB', mimetype:'mp3', key:'serious2.mp3', type:'background'},
 	{name:'serious3.mp3', bucket: audioBucket, size: '3.8MB', mimetype:'mp3', key:'serious3.mp3', type:'background'},
 ]
-const test = async() => {
-	console.log('start')
+const pushFile = async() => {
 	for(const item of audioPUshData){
 		try{
 			await uploadFileData(item.name, item.bucket, item.size, item.key, item.mimetype, item.type)
@@ -227,6 +227,12 @@ const test = async() => {
 			console.log(e)
 		}
 	}
+}
+const test = async() => {
+	console.log('start')
+	const coll = await collection('scene')
+	const doc = chapter1Event1
+	await coll.insertOne(doc)
 	console.log('finish')
 }
 test()
