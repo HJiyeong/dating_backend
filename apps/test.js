@@ -208,7 +208,8 @@ const imagePushData = [
 	{name:'river1.jpg', bucket: imageBucket, size: '4.4MB', mimetype:'jpg', key:'river1.jpg', type:'background'},
 	{name:'river2.jpg', bucket: imageBucket, size: '3.4MB', mimetype:'jpg', key:'river2.jpg', type:'background'},
 	{name:'street.jpg', bucket: imageBucket, size: '5.0MB', mimetype:'jpg', key:'street.jpg', type:'background'},
-	{name:'sungsimdang.jpg', bucket: imageBucket, size: '108.6KB', mimetype:'jpg', key:'sungsimdang.jpg', type:'background'}, //배경끝
+	{name:'sungsimdang.jpg', bucket: imageBucket, size: '108.6KB', mimetype:'jpg', key:'sungsimdang.jpg', type:'background'},
+	{name:'kakao_talk.png', bucket: imageBucket, size: '188.6KB', mimetype:'jpg', key:'kakao_talk.png', type:'background'}, //배경끝
 ]
 const audioPUshData = [
 	{name:'background_basic1.mp3', bucket: audioBucket, size: '13.7MB', mimetype:'mp3', key:'background_basic1.mp3', type:'background'},
@@ -217,9 +218,11 @@ const audioPUshData = [
 	{name:'serious1.mp3', bucket: audioBucket, size: '7.6MB', mimetype:'mp3', key:'serious1.mp3', type:'background'},
 	{name:'serious2.mp3', bucket: audioBucket, size: '8.2MB', mimetype:'mp3', key:'serious2.mp3', type:'background'},
 	{name:'serious3.mp3', bucket: audioBucket, size: '3.8MB', mimetype:'mp3', key:'serious3.mp3', type:'background'},
+	{name:'despair.mp3', bucket: audioBucket, size: '2.1MB', mimetype:'mp3', key:'despair.mp3', type:'background'},
+	{name:'dokidoki.mp3', bucket: audioBucket, size: '4.1MB', mimetype:'mp3', key:'dokidoki.mp3', type:'background'},
 ]
 const pushFile = async() => {
-	for(const item of audioPUshData){
+	for(const item of imagePushData){
 		try{
 			await uploadFileData(item.name, item.bucket, item.size, item.key, item.mimetype, item.type)
 		}
@@ -230,9 +233,10 @@ const pushFile = async() => {
 }
 const test = async() => {
 	console.log('start')
-	const coll = await collection('scene')
-	const doc = chapter1Event5
-	const {insertedId} = await coll.insertOne(doc)
-	console.log('finish', insertedId)
+	await pushFile()
+	// const coll = await collection('scene')
+	// const doc = chapter1Event5
+	// const {insertedId} = await coll.insertOne(doc)
+	console.log('finish')
 }
 test()
