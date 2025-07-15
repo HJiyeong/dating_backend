@@ -1,7 +1,7 @@
 const {collection} = require('../services/db')
 const {generateId} = require('../utils/generateId')
 const { ObjectId } = require("mongodb");
-const {chapter1Event1} = require('../utils/scenarioList')
+const {chapter1Event1, chapter1Event2, chapter1Event3, chapter1Event4, chapter1Event5} = require('../utils/scenarioList')
 const uploadChapter = async(num, title='') => {
 	const coll = await collection('chapter')
 	const doc = {
@@ -231,8 +231,8 @@ const pushFile = async() => {
 const test = async() => {
 	console.log('start')
 	const coll = await collection('scene')
-	const doc = chapter1Event1
-	await coll.insertOne(doc)
-	console.log('finish')
+	const doc = chapter1Event5
+	const {insertedId} = await coll.insertOne(doc)
+	console.log('finish', insertedId)
 }
 test()

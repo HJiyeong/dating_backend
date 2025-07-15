@@ -20,6 +20,9 @@ const getScenario = async(id) => {
 			if(data.character_action_image_id){
 				data.character_action_image_id = await fileService.getSignedURLImg(data.character_action_image_id)
 			} 
+			if(data.character_re_image_id){
+				data.character_re_image_id = await fileService.getSignedURLImg(data.character_re_image_id)
+			} 
 		}
 		catch(e){
 			console.log(e)
