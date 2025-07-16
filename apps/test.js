@@ -169,7 +169,8 @@ const imagePushData = [
 	{name:'seoyeon_home.png', bucket: imageBucket, size: '2.6MB', mimetype:'png', key:'seoyeon_home.png', type:'character'},
 	{name:'seoyeon_shame.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'seoyeon_shame.png', type:'character'},
 	{name:'seoyeon_side.png', bucket: imageBucket, size: '2.3MB', mimetype:'png', key:'seoyeon_side.png', type:'character'},
-	{name:'seoyeon_smile.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'seoyeon_smile.png', type:'character'}, //서연 끝
+	{name:'seoyeon_smile.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'seoyeon_smile.png', type:'character'},
+	{name:'seoyeon_head.png', bucket: imageBucket, size: '944.2KB', mimetype:'png', key:'seoyeon_head.png', type:'character'},  //서연 끝
 
 	{name:'harin_angry.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_angry.png', type:'character'}, //하린 시작
 	{name:'harin_back.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'harin_back.png', type:'character'}, 
@@ -181,12 +182,22 @@ const imagePushData = [
 	{name:'harin_shame.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_shame.png', type:'character'},
 	{name:'harin_side.png', bucket: imageBucket, size: '2.4MB', mimetype:'png', key:'harin_side.png', type:'character'},
 	{name:'harin_smile.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_smile.png', type:'character'},
-	{name:'harin_upset.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_upset.png', type:'character'}, // 하린 끝
+	{name:'harin_upset.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'harin_upset.png', type:'character'},
+	{name:'harin_head.png', bucket: imageBucket, size: '776.2KB', mimetype:'png', key:'harin_head.png', type:'character'}, // 하린 끝
 
 	{name:'hero_basic.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'hero_basic.png', type:'character'}, //주인공
 	{name:'jihoo_basic.png', bucket: imageBucket, size: '2.1MB', mimetype:'png', key:'jihoo_basic.png', type:'character'}, //지후
 	{name:'jinseop_basic.png', bucket: imageBucket, size: '1.8MB', mimetype:'png', key:'jinseop_basic.png', type:'character'}, //진섭
 	{name:'nubzuki_basic.PNG', bucket: imageBucket, size: '1.7MB', mimetype:'PNG', key:'nubzuki_basic.PNG', type:'character'}, //넙죽이
+
+	{name:'hero_head.png', bucket: imageBucket, size: '2.5MB', mimetype:'png', key:'hero_head.png', type:'character'}, //주인공
+	{name:'jihoo_head.png', bucket: imageBucket, size: '2.1MB', mimetype:'png', key:'jihoo_head.png', type:'character'}, //지후
+	{name:'jinseop_head.png', bucket: imageBucket, size: '1.8MB', mimetype:'png', key:'jinseop_head.png', type:'character'}, //진섭
+	{name:'nubzuki_head.png', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'nubzuki_head.png', type:'character'}, //넙죽이
+
+	{name:'jihoo_detail.png', bucket: imageBucket, size: '2.1MB', mimetype:'png', key:'jihoo_detail.png', type:'character'}, //지후
+	{name:'jinseop_detail.png', bucket: imageBucket, size: '1.8MB', mimetype:'png', key:'jinseop_detail.png', type:'character'}, //진섭
+	{name:'nubzuki_detail.png', bucket: imageBucket, size: '1.7MB', mimetype:'png', key:'nubzuki_detail.png', type:'character'}, //넙죽이
 
 	{name:'blackboard_harin.jpg', bucket: imageBucket, size: '1.6MB', mimetype:'jpg', key:'blackboard_harin.jpg', type:'background'}, //배경시작
 	{name:'blackboard_seoyeon.jpg', bucket: imageBucket, size: '1.4MB', mimetype:'jpg', key:'blackboard_seoyeon.jpg', type:'background'},
@@ -235,9 +246,10 @@ const pushFile = async() => {
 }
 const test = async() => {
 	console.log('start')
-	const coll = await collection('scene')
-	const doc = {...chapter3Event5, created_at: new Date(), updated_at: new Date(), removed_at: null}
-	const {insertedId} = await coll.insertOne(doc)
-	console.log('finish', insertedId)
+	// const coll = await collection('scene')
+	// const doc = {...chapter3Event5, created_at: new Date(), updated_at: new Date(), removed_at: null}
+	// const {insertedId} = await coll.insertOne(doc)
+	await pushFile()
+	console.log('finish')
 }
 test()
