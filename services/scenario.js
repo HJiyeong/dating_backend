@@ -31,7 +31,7 @@ const getScenario = async(id) => {
 			console.log(e)
 		}
 	}
-	return {...scene, chapter_title: chapter.title, event_title: chapter.event.find(e => e.number == scene.event).title}
+	return {...scene, chapter_title: chapter.title, chapter_number: chapter.number, event_title: chapter.event.find(e => e.number == scene.event).title}
 }
 const getCurrentSaveScenario = async(user_id) => {
 	const coll_user = await collection('user')
