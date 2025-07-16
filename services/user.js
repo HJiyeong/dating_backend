@@ -9,7 +9,7 @@ const getToken = async(user_id) => {
 	if(!user) return {status:'fail', message:'not_user'}
 	const token = await authService.sign(user._id.toString(), user.name)
 	if(token.status == 'error') return {status:'fail', message:'not_token'}
-	return {status: 'success', token}
+	return {status: 'success', token, is_first_scene: user.save_slot.find(e => e.is_current).scene_id == '687691b202396a82e88e131e'}
 }
 const createUser = async(kakao_id, name) => {
 	const coll_user = await collection('user')
