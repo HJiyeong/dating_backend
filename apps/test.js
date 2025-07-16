@@ -250,6 +250,10 @@ const test = async() => {
 	// const doc = {...chapter3Event5, created_at: new Date(), updated_at: new Date(), removed_at: null}
 	// const {insertedId} = await coll.insertOne(doc)
 	await pushFile()
+	console.log(generateId())
+	// const coll = await collection('scene')
+	// const doc = {...chapter3Event5, created_at: new Date(), updated_at: new Date(), removed_at: null}
+	// const {insertedId} = await coll.insertOne(doc)
 	console.log('finish')
 }
 test()

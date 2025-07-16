@@ -15,7 +15,7 @@ const chapterId = {
 }
 const characterImageId = {
 	hero_basic:'hero_basic.png', // 넙죽이 기본
-	nubzuki_basic:'nubzuki_basic.PNG', // 넙죽이 기본
+	nubzuki_basic:'nubzuki_basic.png', // 넙죽이 기본
 	jinseop_basic:'jinseop_basic.png', // 진섭 기본
 	jihoo_basic:'jihoo_basic.png', // 지후 기본
 	seoyeon_basic:'seoyeon_basic.png', // 서연 기본
@@ -2325,9 +2325,9 @@ const chapter3Event2 = {
 		type: 'text',
 	  },
 	  {
-		script: 'user_name이가 음료수 사줬다아~',
+		script: 'user_name 음료수 사줬다아~',
 		user_name: true,
-		josa:true,
+		josa:'가',
 		character_id: characterId.harin,
 		type: 'text',
 	  },
@@ -2705,10 +2705,10 @@ const chapter3Event2 = {
 		type: 'text'
 	  },
 	  {
-		script: '오히려 좋아! user_name이랑 나랑 둘이 보려고 했는데, 같이 보자!',
+		script: '오히려 좋아! user_name랑 나랑 둘이 보려고 했는데, 같이 보자!',
 		character_id: characterId.harin,
 		user_name:true,
-		josa:true,
+		josa:'이',
 		type: 'text'
 	  },
 	  {
@@ -2770,6 +2770,7 @@ const chapter3Event2 = {
 		script: '으으 진짜 무서웠어… user_name 덕분에 살았어ㅠㅠ',
 		character_id: characterId.harin,
 		user_name:true,
+		josa:'이',
 		character_image_id: characterImageId.harin_basic,
 		type: 'text'
 	  },
@@ -2784,10 +2785,10 @@ const chapter3Event2 = {
 		type: 'text'
 	  },
 	  {
-		script: '별로 안 무서웠어요. user_name이 있어서 편했나 봐요.',
+		script: '별로 안 무서웠어요. user_name 있어서 편했나 봐요.',
 		character_id: characterId.seoyeon,
 		user_name:true,
-		josa:true,
+		josa:'가',
 		character_image_id: characterImageId.seoyeon_basic,
 		type: 'text'
 	  },
@@ -2993,8 +2994,10 @@ const chapter3Event2 = {
 		type: 'text',
 	  },
 	  {
-		script: '커플은 ○○와… 누구?',
+		script: '커플은 user_name와… 누구?',
 		character_id: characterId.jihoo,
+		user_name:true,
+		josa:'이',
 		type: 'text',
 	  },
 	  {

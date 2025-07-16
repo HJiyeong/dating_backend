@@ -8,21 +8,24 @@ const getScenario = async(id) => {
 	const chapter = await coll_chapter.findOne({_id: new ObjectId(scene.chapter_id)})
 	for(const data of scene.scenario){
 		try{
-			if(data.background_image_id){
-				data.background_image_id = await fileService.getSignedURLImg(data.background_image_id)
-			}
-			if(data.character_image_id){
-				data.character_image_id = await fileService.getSignedURLImg(data.character_image_id)
-			} 
+			// if(data.background_image_id){
+			// 	data.background_image_id = await fileService.getSignedURLImg(data.background_image_id)
+			// }
+			// if(data.character_image_id){
+			// 	data.character_image_id = await fileService.getSignedURLImg(data.character_image_id)
+			// } 
 			if(data.background_sound_id){
 				data.background_sound_id = await fileService.getSignedUrlAudio(data.background_sound_id)
 			} 
-			if(data.character_action_image_id){
-				data.character_action_image_id = await fileService.getSignedURLImg(data.character_action_image_id)
-			} 
-			if(data.character_re_image_id){
-				data.character_re_image_id = await fileService.getSignedURLImg(data.character_re_image_id)
-			} 
+			// if(data.character_action_image_id){
+			// 	data.character_action_image_id = await fileService.getSignedURLImg(data.character_action_image_id)
+			// } 
+			// if(data.second_character_image_id){
+			// 	data.second_character_image_id = await fileService.getSignedURLImg(data.second_character_image_id)
+			// } 
+			// if(data.character_re_image_id){
+			// 	data.character_re_image_id = await fileService.getSignedURLImg(data.character_re_image_id)
+			// } 
 		}
 		catch(e){
 			console.log(e)
